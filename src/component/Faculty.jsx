@@ -54,7 +54,6 @@ const FacultyComponent = () => {
                 >
                   <ClearIcon fontSize="small" />
                 </IconButton>
-                {/* тут есть иконки */}
               </TableCell>
             </TableRow>
           </TableBody>
