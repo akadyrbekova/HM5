@@ -1,5 +1,5 @@
 const DirectionComponent = () => {
-  return <>авыаыа</>;
+  return <>gh</>;
 };
 
 export default DirectionComponent;

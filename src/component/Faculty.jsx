@@ -1,4 +1,3 @@
-import ButtonUI from "../ui/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,13 +7,12 @@ import TableRow from "@mui/material/TableRow";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
+import MyModal from "../features/modal/Modal";
 
 const FacultyComponent = () => {
   return (
     <>
-      <div className="mb-4 flex justify-end">
-        <ButtonUI />
-      </div>
+      <MyModal />
 
       <TableContainer className="rounded-xl shadow border border-gray-200">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
