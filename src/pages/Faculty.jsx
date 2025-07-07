@@ -1,5 +1,5 @@
 const Faculty = () => {
-  return <div>Faculty home</div>;
+  return <h1>Факультет</h1>;
 };
 
 export default Faculty;

@@ -1,5 +1,5 @@
 const Direction = () => {
-  return <div>Direction Home</div>;
+  return <p>Направление</p>;
 };
 
 export default Direction;
