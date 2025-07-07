@@ -1,7 +1,5 @@
-import React from "react";
-
-const Direction = () => {
-  return <div>Direction</div>;
+const DirectionComponent = () => {
+  return <>авыаыа</>;
 };
 
-export default Direction;
+export default DirectionComponent;

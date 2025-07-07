@@ -5,10 +5,10 @@ import Direction from "../pages/Direction";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/tool1" element={<Faculty />}>
+      <Route path="/faculty" element={<Faculty />}>
         Факультет
       </Route>
-      <Route path="/tool2" element={<Direction />}>
+      <Route path="/direction" element={<Direction />}>
         Направление
       </Route>
     </Routes>
