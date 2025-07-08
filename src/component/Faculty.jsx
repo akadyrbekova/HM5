@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
-import MyModal from "../features/modal/Modal";
+import MyModal from "./modal/Modal";
 
 const FacultyComponent = () => {
   return (
@@ -54,7 +54,6 @@ const FacultyComponent = () => {
                 >
                   <ClearIcon fontSize="small" />
                 </IconButton>
-                {/* тут есть иконки */}
               </TableCell>
             </TableRow>
           </TableBody>
