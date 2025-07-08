@@ -8,8 +8,10 @@ import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import MyModal from "./modal/Modal";
+import useAdd from "../hook/useAdd";
 
 const FacultyComponent = () => {
+  const { faculties } = useAdd();
   return (
     <>
       <MyModal />
@@ -30,32 +32,47 @@ const FacultyComponent = () => {
               </TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
-            <TableRow hover className="hover:bg-gray-50 transition">
-              <TableCell component="th" scope="row">
-                1
-              </TableCell>
-              <TableCell align="right">ИИЭФ</TableCell>
-              <TableCell align="right">Институт</TableCell>
-              <TableCell align="right">
-                <IconButton
-                  color="primary"
-                  aria-label="edit"
-                  size="small"
-                  className="text-blue-600 hover:bg-blue-100 p-1 rounded-full"
+            {faculties && faculties.length > 0 ? (
+              faculties.map((item, index) => (
+                <TableRow
+                  key={item.id}
+                  hover
+                  className="hover:bg-gray-50 transition"
                 >
-                  <EditIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  color="error"
-                  aria-label="clear"
-                  size="small"
-                  className="text-red-600 hover:bg-red-100 p-1 rounded-full"
-                >
-                  <ClearIcon fontSize="small" />
-                </IconButton>
-              </TableCell>
-            </TableRow>
+                  <TableCell component="th" scope="row">
+                    {index + 1}
+                  </TableCell>
+                  <TableCell align="right">{item.shortName}</TableCell>
+                  <TableCell align="right">{item.name}</TableCell>
+                  <TableCell align="right">
+                    <IconButton
+                      color="primary"
+                      aria-label="edit"
+                      size="small"
+                      className="text-blue-600 hover:bg-blue-100 p-1 rounded-full"
+                    >
+                      <EditIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton
+                      color="error"
+                      aria-label="clear"
+                      size="small"
+                      className="text-red-600 hover:bg-red-100 p-1 rounded-full"
+                    >
+                      <ClearIcon fontSize="small" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} align="center">
+                  Нет данных...
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>

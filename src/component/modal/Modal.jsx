@@ -9,6 +9,14 @@ const MyModal = () => {
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
   const { addFaculty, name, shortName, setName, setShortName } = useAdd();
+
+  const handleSubmit = (e) => {
+    addFaculty(e, () => {
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
+    });
+  };
   return (
     <>
       <div className="mb-4 flex justify-end">
@@ -17,7 +25,7 @@ const MyModal = () => {
 
       <ModalAdd open={open} onClose={handleClose}>
         <form
-          onSubmit={addFaculty}
+          onSubmit={handleSubmit}
           className="absolute left-1/2 top-[20%] w-[500px] -translate-x-1/2 rounded-xl bg-white p-6 shadow-lg"
         >
           <Typography variant="h6" className="mb-4">
