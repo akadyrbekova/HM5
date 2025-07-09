@@ -7,10 +7,10 @@ import { AddProvider } from "./context/AddContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <AddProvider>
-      <ModalProvider>
+    <ModalProvider>
+      <AddProvider>
         <App />
-      </ModalProvider>
-    </AddProvider>
+      </AddProvider>
+    </ModalProvider>
   </BrowserRouter>
 );

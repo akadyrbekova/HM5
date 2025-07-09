@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { ModalContext } from "./ModalContext";
 
 export const AddContext = React.createContext();
 
@@ -9,6 +10,7 @@ export const AddProvider = ({ children }) => {
     const saved = localStorage.getItem("faculties");
     return saved ? JSON.parse(saved) : [];
   });
+  const { handleClose } = useContext(ModalContext);
 
   useEffect(() => {
     localStorage.setItem("faculties", JSON.stringify(faculties));
@@ -27,6 +29,7 @@ export const AddProvider = ({ children }) => {
     setFaculties((prev) => [...prev, newFaculty]);
     setShortName("");
     setName("");
+    handleClose();
   };
 
   return (
