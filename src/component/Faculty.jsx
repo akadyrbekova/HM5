@@ -8,11 +8,13 @@ import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import MyModal from "./modal/Modal";
-import useAdd from "../hook/useAdd";
 import useDelete from "../hook/useDelete";
 import useEdit from "../hook/useEdit";
+import { useContext } from "react";
+import { AddContext } from "../context/AddContext";
+
 const FacultyComponent = () => {
-  const { faculties } = useAdd();
+  const { faculties } = useContext(AddContext);
   const { deleteFaculty } = useDelete();
   const { editFaculty } = useEdit();
 
