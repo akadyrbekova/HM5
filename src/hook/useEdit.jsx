@@ -8,15 +8,15 @@ const useEdit = () => {
 
   const editFaculty = (id) => {
     handleOpen();
-    const getFaculties = JSON.parse(localStorage.getItem("faculties"));
 
+    const getFaculties = JSON.parse(localStorage.getItem("faculties"));
     const newFaculties = getFaculties.find((item) => item.id === id);
+
     if (newFaculties) {
       setShortName(newFaculties.shortName);
       setName(newFaculties.name);
     }
     setFaculties((prev) => [...prev, newFaculties]);
-    console.log(newFaculties.shortName, "ghjghj");
   };
 
   return {

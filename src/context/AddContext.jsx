@@ -18,6 +18,7 @@ export const AddProvider = ({ children }) => {
 
   const addFaculty = (e) => {
     e.preventDefault();
+
     if (shortName.trim() === "" || name.trim() === "") return;
 
     const newFaculty = {
