@@ -1,7 +1,9 @@
-import useAdd from "./useAdd";
+import { useContext } from "react";
+
+import { AddContext } from "../context/AddContext";
 
 const useDelete = () => {
-  const { faculties, setFaculties } = useAdd();
+  const { faculties, setFaculties } = useContext(AddContext);
   const deleteFaculty = (id) => {
     const newFaculties = faculties.filter((item) => item.id !== id);
     setFaculties(newFaculties);

@@ -1,10 +1,24 @@
-import useAdd from "./useAdd";
+import { useContext } from "react";
+import { ModalContext } from "../context/ModalContext";
+import { AddContext } from "../context/AddContext";
 
 const useEdit = () => {
-  const { faculties, setFaculties } = useAdd();
+  const { setFaculties, setShortName, setName } = useContext(AddContext);
+  const { handleOpen } = useContext(ModalContext);
+
   const editFaculty = (id) => {
-    const newFaculties = faculties.find((item) => item.id === id);
+    handleOpen();
+    const getFaculties = JSON.parse(localStorage.getItem("faculties"));
+
+    const newFaculties = getFaculties.find((item) => item.id === id);
+    if (newFaculties) {
+      setShortName(newFaculties.shortName);
+      setName(newFaculties.name);
+    }
+    setFaculties((prev) => [...prev, newFaculties]);
+    console.log(newFaculties.shortName, "ghjghj");
   };
+
   return {
     editFaculty,
   };
