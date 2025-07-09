@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import ModalAdd from "@mui/material/Modal";
 import ButtonUI from "../../ui/Button";
 import useAdd from "../../hook/useAdd";
+import { ModalContext } from "../../context/ModalContext";
 
-const MyModal = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
+const MyModal = ({ children }) => {
+  const { open, handleClose, handleOpen } = useContext(ModalContext);
   const { addFaculty, name, shortName, setName, setShortName } = useAdd();
 
   const handleSubmit = (e) => {

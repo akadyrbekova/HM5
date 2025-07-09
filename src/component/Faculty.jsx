@@ -9,9 +9,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import MyModal from "./modal/Modal";
 import useAdd from "../hook/useAdd";
-
+import useDelete from "../hook/useDelete";
+import useEdit from "../hook/useEdit";
 const FacultyComponent = () => {
   const { faculties } = useAdd();
+  const { deleteFaculty } = useDelete();
+  const { editFaculty } = useEdit();
+
   return (
     <>
       <MyModal />
@@ -48,6 +52,7 @@ const FacultyComponent = () => {
                   <TableCell align="right">{item.name}</TableCell>
                   <TableCell align="right">
                     <IconButton
+                      onClick={(e) => editFaculty(item.id)}
                       color="primary"
                       aria-label="edit"
                       size="small"
@@ -56,6 +61,7 @@ const FacultyComponent = () => {
                       <EditIcon fontSize="small" />
                     </IconButton>
                     <IconButton
+                      onClick={(e) => deleteFaculty(item.id)}
                       color="error"
                       aria-label="clear"
                       size="small"

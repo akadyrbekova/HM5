@@ -35,6 +35,7 @@ const useAdd = () => {
     setShortName,
     setName,
     faculties,
+    setFaculties,
   };
 };
 export default useAdd;
