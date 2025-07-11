@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { AddContext } from "../context/AddContext";
-import SelectUI from "../ui/Select";
+import SelectUI from "../component/Select";
 const SelectFeatures = () => {
   const [selected, setSelected] = useState("");
   const { faculties } = useContext(AddContext);

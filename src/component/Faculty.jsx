@@ -7,11 +7,12 @@ import TableRow from "@mui/material/TableRow";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
-import MyModal from "./modal/Modal";
+
 import useDelete from "../hook/useDelete";
 import useEdit from "../hook/useEdit";
 import { useContext } from "react";
 import { AddContext } from "../context/AddContext";
+import ModalFeatures from "../features/ModalFeatures";
 
 const FacultyComponent = () => {
   const { faculties } = useContext(AddContext);
@@ -20,7 +21,7 @@ const FacultyComponent = () => {
 
   return (
     <>
-      <MyModal />
+      <ModalFeatures />
 
       <TableContainer className="rounded-xl shadow border border-gray-200">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -1,23 +1,29 @@
-import { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import ModalAdd from "@mui/material/Modal";
 import ButtonUI from "../../ui/Button";
 
-import { ModalContext } from "../../context/ModalContext";
-import { AddContext } from "../../context/AddContext";
+const MyModal = ({
+  children,
+  open,
+  handleClose,
+  handleSubmit,
+  handleOpen,
+  shortName,
+  setName,
+  setShortName,
+  name,
+}) => {
+  // const { open, handleClose, handleOpen } = useContext(ModalContext);
+  // const { addFaculty, name, shortName, setName, setShortName } =
+  //   useContext(AddContext);
 
-const MyModal = ({ children }) => {
-  const { open, handleClose, handleOpen } = useContext(ModalContext);
-  const { addFaculty, name, shortName, setName, setShortName } =
-    useContext(AddContext);
-
-  const handleSubmit = (e) => {
-    addFaculty(e, () => {
-      setTimeout(() => {
-        handleClose();
-      }, 1000);
-    });
-  };
+  // const handleSubmit = (e) => {
+  //   addFaculty(e, () => {
+  //     setTimeout(() => {
+  //       handleClose();
+  //     }, 1000);
+  //   });
+  // };
   return (
     <>
       <div className="mb-4 flex justify-end">
