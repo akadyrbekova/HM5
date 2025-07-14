@@ -2,15 +2,15 @@ import Typography from "@mui/material/Typography";
 import ModalAdd from "@mui/material/Modal";
 import ButtonUI from "../../ui/Button";
 
-const MyModal = ({
+const ModalDirection = ({
   children,
   open,
   handleClose,
   handleSubmit,
   handleOpen,
-  shortName,
+  code,
   setName,
-  setShortName,
+  setCode,
   name,
 }) => {
   return (
@@ -25,13 +25,13 @@ const MyModal = ({
           className="absolute left-1/2 top-[20%] w-[500px] -translate-x-1/2 rounded-xl bg-white p-6 shadow-lg"
         >
           <Typography variant="h6" className="mb-4">
-            Факультет/Организация
+            Специальность
           </Typography>
           <input
-            value={shortName}
-            onChange={(e) => setShortName(e.target.value)}
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
             type="number"
-            placeholder="Короткое название"
+            placeholder="Шифр"
             className="mb-3 w-full rounded border px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
@@ -54,4 +54,4 @@ const MyModal = ({
   );
 };
 
-export default MyModal;
+export default ModalDirection;

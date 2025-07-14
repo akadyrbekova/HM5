@@ -22,7 +22,6 @@ const FacultyComponent = () => {
   return (
     <>
       <ModalFeatures />
-
       <TableContainer className="rounded-xl shadow border border-gray-200">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead sx={{ backgroundColor: "#f5f5f5" }}>

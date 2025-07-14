@@ -6,6 +6,7 @@ export const AddContext = React.createContext();
 export const AddProvider = ({ children }) => {
   const [shortName, setShortName] = useState("");
   const [name, setName] = useState("");
+  const [code, setCode] = useState("");
   const [faculties, setFaculties] = useState(() => {
     const saved = localStorage.getItem("faculties");
     return saved ? JSON.parse(saved) : [];
@@ -33,6 +34,22 @@ export const AddProvider = ({ children }) => {
     handleClose();
   };
 
+  const addDirection = (e) => {
+    e.preventDefault();
+
+    if (code.trim() === "" || code.trim() === "") return;
+
+    const newFaculty = {
+      id: Date.now(),
+      code: code.trim(),
+      name: name.trim(),
+    };
+
+    setFaculties((prev) => [...prev, newFaculty]);
+    setShortName("");
+    setName("");
+    handleClose();
+  };
   return (
     <AddContext.Provider
       value={{
@@ -43,6 +60,9 @@ export const AddProvider = ({ children }) => {
         setName,
         faculties,
         setFaculties,
+        addDirection,
+        code,
+        setCode,
       }}
     >
       {children}
