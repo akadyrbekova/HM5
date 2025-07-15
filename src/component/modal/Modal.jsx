@@ -1,13 +1,11 @@
 import Typography from "@mui/material/Typography";
 import ModalAdd from "@mui/material/Modal";
-import ButtonUI from "../../ui/Button";
 
 const MyModal = ({
   children,
   open,
   handleClose,
   handleSubmit,
-  handleOpen,
   shortName,
   setName,
   setShortName,
@@ -15,10 +13,6 @@ const MyModal = ({
 }) => {
   return (
     <>
-      <div className="mb-4 flex justify-end">
-        <ButtonUI handleOpen={handleOpen} />
-      </div>
-
       <ModalAdd open={open} onClose={handleClose}>
         <form
           onSubmit={handleSubmit}

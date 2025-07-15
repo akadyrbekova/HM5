@@ -31,7 +31,6 @@ export const AddProvider = ({ children }) => {
     setFaculties((prev) => [...prev, newFaculty]);
     setShortName("");
     setName("");
-    handleClose();
   };
 
   const addDirection = (e) => {

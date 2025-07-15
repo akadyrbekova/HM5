@@ -1,4 +1,4 @@
-const ButtonUI = ({ handleOpen, modalType, setActiveModal }) => {
+const ButtonUI = ({ handleOpen, setActiveModal, modalType }) => {
   const handleClick = () => {
     setActiveModal(modalType);
     handleOpen();

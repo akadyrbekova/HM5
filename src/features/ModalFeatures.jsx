@@ -3,10 +3,9 @@ import MyModal from "../component/modal/Modal";
 import { ModalContext } from "../context/ModalContext";
 import { AddContext } from "../context/AddContext";
 import ModalDirection from "../component/modal/ModalDirection";
-import ButtonUI from "../ui/Button";
+
 const ModalFeatures = () => {
-  const { open, handleClose, handleOpen, activeModal, setActiveModal } =
-    useContext(ModalContext);
+  const { handleClose, activeModal, setActiveModal } = useContext(ModalContext);
   const { addFaculty, name, shortName, setName, setShortName, code, setCode } =
     useContext(AddContext);
 
