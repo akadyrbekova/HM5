@@ -15,7 +15,6 @@ const ModalFeatures = () => {
     code,
     setCode,
     addDirection,
-    selectedFacultyId,
   } = useContext(AddContext);
 
   const handleSubmit = (e) => {
@@ -29,7 +28,6 @@ const ModalFeatures = () => {
 
   const handleDirection = (e) => {
     addDirection(e, () => {
-      console.log("Выбранный факультет:", selectedFacultyId);
       setTimeout(() => {
         handleClose();
         setActiveModal(null);

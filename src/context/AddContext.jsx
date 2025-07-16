@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ModalContext } from "./ModalContext";
 
 export const AddContext = React.createContext();
 
@@ -13,6 +14,7 @@ export const AddProvider = ({ children }) => {
   const [directions, setDirections] = useState([]);
   const [selectedFacultyId, setSelectedFacultyId] = useState(null);
 
+  const { handleClose } = useContext(ModalContext);
   useEffect(() => {
     localStorage.setItem("faculties", JSON.stringify(faculties));
   }, [faculties]);
@@ -32,9 +34,10 @@ export const AddProvider = ({ children }) => {
     setFaculties((prev) => [...prev, newFaculty]);
     setShortName("");
     setName("");
+    handleClose();
   };
 
-  const addDirection = (e, callback) => {
+  const addDirection = (e) => {
     e.preventDefault();
 
     if (!selectedFacultyId || code.trim() === "" || name.trim() === "") return;
@@ -54,9 +57,9 @@ export const AddProvider = ({ children }) => {
     });
 
     setFaculties(updatedFaculties);
+
     setCode("");
     setName("");
-    if (callback) callback();
   };
 
   return (
@@ -75,6 +78,7 @@ export const AddProvider = ({ children }) => {
         directions,
         selectedFacultyId,
         setSelectedFacultyId,
+        setDirections,
       }}
     >
       {children}

@@ -1,3 +1,5 @@
+import React, { useContext } from "react";
+import { AddContext } from "../context/AddContext";
 import ModalFeatures from "../features/ModalFeatures";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -10,6 +12,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 
 const DirectionComponent = () => {
+  const { faculties, selectedFacultyId } = useContext(AddContext);
+
+  const selectedFaculty = faculties.find((f) => f.id === selectedFacultyId);
+  console.log(selectedFaculty, "7987979");
+
+  const directions = selectedFaculty?.directions || [];
+
   return (
     <div>
       <div className="mb-4 flex justify-end">
@@ -31,39 +40,44 @@ const DirectionComponent = () => {
               </TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
-            <TableRow hover className="hover:bg-gray-50 transition">
-              <TableCell component="th" scope="row">
-                1
-              </TableCell>
-              <TableCell align="right">123</TableCell>
-              <TableCell align="right">hello</TableCell>
-              <TableCell align="right">
-                <IconButton
-                  color="primary"
-                  aria-label="edit"
-                  size="small"
-                  className="text-blue-600 hover:bg-blыue-100 p-1 rounded-full"
+            {directions.length > 0 ? (
+              directions.map((dir, index) => (
+                <TableRow
+                  key={dir.id}
+                  hover
+                  className="hover:bg-gray-50 transition"
                 >
-                  <EditIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  color="error"
-                  aria-label="clear"
-                  size="small"
-                  className="text-red-600 hover:bg-red-100 p-1 rounded-full"
-                >
-                  <ClearIcon fontSize="small" />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-
-            <TableRow>
-              <TableCell colSpan={4} align="center">
-                Нет данных...
-              </TableCell>
-            </TableRow>
+                  <TableCell>{index + 1}</TableCell>
+                  <TableCell align="right">{dir.code}</TableCell>
+                  <TableCell align="right">{dir.name}</TableCell>
+                  <TableCell align="right">
+                    <IconButton
+                      color="primary"
+                      aria-label="edit"
+                      size="small"
+                      className="text-blue-600 hover:bg-blue-100 p-1 rounded-full"
+                    >
+                      <EditIcon fontSize="small" />
+                    </IconButton>
+                    <IconButton
+                      color="error"
+                      aria-label="clear"
+                      size="small"
+                      className="text-red-600 hover:bg-red-100 p-1 rounded-full"
+                    >
+                      <ClearIcon fontSize="small" />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} align="center">
+                  Нет данных...
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
