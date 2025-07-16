@@ -19,7 +19,7 @@ const ModalDirection = ({
           className="absolute left-1/2 top-[20%] w-[500px] -translate-x-1/2 rounded-xl bg-white p-6 shadow-lg"
         >
           <Typography variant="h6" className="mb-4">
-            Специальность
+            Направление
           </Typography>
           <input
             value={code}

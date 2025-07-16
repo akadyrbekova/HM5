@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
-import { ModalContext } from "./ModalContext";
+import React, { useState, useEffect } from "react";
 
 export const AddContext = React.createContext();
 
@@ -11,7 +10,8 @@ export const AddProvider = ({ children }) => {
     const saved = localStorage.getItem("faculties");
     return saved ? JSON.parse(saved) : [];
   });
-  const { handleClose } = useContext(ModalContext);
+  const [directions, setDirections] = useState([]);
+  const [selectedFacultyId, setSelectedFacultyId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("faculties", JSON.stringify(faculties));
@@ -26,6 +26,7 @@ export const AddProvider = ({ children }) => {
       id: Date.now(),
       shortName: shortName.trim(),
       name: name.trim(),
+      directions: [],
     };
 
     setFaculties((prev) => [...prev, newFaculty]);
@@ -33,22 +34,31 @@ export const AddProvider = ({ children }) => {
     setName("");
   };
 
-  const addDirection = (e) => {
+  const addDirection = (e, callback) => {
     e.preventDefault();
 
-    if (code.trim() === "" || code.trim() === "") return;
+    if (!selectedFacultyId || code.trim() === "" || name.trim() === "") return;
 
-    const newFaculty = {
+    const newDirection = {
       id: Date.now(),
       code: code.trim(),
       name: name.trim(),
     };
 
-    setFaculties((prev) => [...prev, newFaculty]);
-    setShortName("");
+    const updatedFaculties = faculties.map((faculty) => {
+      if (faculty.id === selectedFacultyId) {
+        const updatedDirections = [...(faculty.directions || []), newDirection];
+        return { ...faculty, directions: updatedDirections };
+      }
+      return faculty;
+    });
+
+    setFaculties(updatedFaculties);
+    setCode("");
     setName("");
-    handleClose();
+    if (callback) callback();
   };
+
   return (
     <AddContext.Provider
       value={{
@@ -62,6 +72,9 @@ export const AddProvider = ({ children }) => {
         addDirection,
         code,
         setCode,
+        directions,
+        selectedFacultyId,
+        setSelectedFacultyId,
       }}
     >
       {children}

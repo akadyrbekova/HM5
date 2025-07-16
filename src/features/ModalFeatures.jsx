@@ -6,8 +6,17 @@ import ModalDirection from "../component/modal/ModalDirection";
 
 const ModalFeatures = () => {
   const { handleClose, activeModal, setActiveModal } = useContext(ModalContext);
-  const { addFaculty, name, shortName, setName, setShortName, code, setCode } =
-    useContext(AddContext);
+  const {
+    addFaculty,
+    name,
+    shortName,
+    setName,
+    setShortName,
+    code,
+    setCode,
+    addDirection,
+    selectedFacultyId,
+  } = useContext(AddContext);
 
   const handleSubmit = (e) => {
     addFaculty(e, () => {
@@ -18,6 +27,15 @@ const ModalFeatures = () => {
     });
   };
 
+  const handleDirection = (e) => {
+    addDirection(e, () => {
+      console.log("Выбранный факультет:", selectedFacultyId);
+      setTimeout(() => {
+        handleClose();
+        setActiveModal(null);
+      }, 1000);
+    });
+  };
   return (
     <>
       {activeModal === "faculty" && (
@@ -36,7 +54,7 @@ const ModalFeatures = () => {
         <ModalDirection
           open={true}
           handleClose={handleClose}
-          handleSubmit={handleSubmit}
+          handleSubmit={handleDirection}
           code={code}
           setCode={setCode}
           setName={setName}

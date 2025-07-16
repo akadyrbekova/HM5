@@ -1,29 +1,21 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AddContext } from "../context/AddContext";
 import SelectUI from "../component/Select";
-const SelectFeatures = () => {
-  const [selected, setSelected] = useState("");
-  const { faculties } = useContext(AddContext);
 
-  useEffect(() => {
-    if (faculties && faculties.length > 0) {
-      setSelected("");
-      console.log(faculties);
-    }
-  }, [faculties]);
+const SelectFeatures = () => {
+  const { faculties, selectedFacultyId, setSelectedFacultyId } =
+    useContext(AddContext);
 
   const handleChange = (event) => {
-    setSelected(event.target.value);
+    setSelectedFacultyId(event.target.value);
   };
 
   return (
-    <>
-      <SelectUI
-        faculties={faculties}
-        selected={selected}
-        handleChange={handleChange}
-      />
-    </>
+    <SelectUI
+      faculties={faculties}
+      selected={selectedFacultyId || ""}
+      handleChange={handleChange}
+    />
   );
 };
 
