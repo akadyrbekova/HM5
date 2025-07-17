@@ -10,15 +10,15 @@ import TableRow from "@mui/material/TableRow";
 import ClearIcon from "@mui/icons-material/Clear";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
+import useDelete from "../hook/useDelete";
 
 const DirectionComponent = () => {
   const { faculties, selectedFacultyId } = useContext(AddContext);
 
   const selectedFaculty = faculties.find((f) => f.id === selectedFacultyId);
-  console.log(selectedFaculty, "7987979");
 
   const directions = selectedFaculty?.directions || [];
-
+  const { deleteDirection } = useDelete();
   return (
     <div>
       <div className="mb-4 flex justify-end">
@@ -42,15 +42,15 @@ const DirectionComponent = () => {
           </TableHead>
           <TableBody>
             {directions.length > 0 ? (
-              directions.map((dir, index) => (
+              directions.map((item, index) => (
                 <TableRow
-                  key={dir.id}
+                  key={item.id}
                   hover
                   className="hover:bg-gray-50 transition"
                 >
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell align="right">{dir.code}</TableCell>
-                  <TableCell align="right">{dir.name}</TableCell>
+                  <TableCell align="right">{item.code}</TableCell>
+                  <TableCell align="right">{item.name}</TableCell>
                   <TableCell align="right">
                     <IconButton
                       color="primary"
@@ -61,6 +61,7 @@ const DirectionComponent = () => {
                       <EditIcon fontSize="small" />
                     </IconButton>
                     <IconButton
+                      onClick={(e) => deleteDirection(item.id)}
                       color="error"
                       aria-label="clear"
                       size="small"
